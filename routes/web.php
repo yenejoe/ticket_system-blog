@@ -30,6 +30,11 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register');
 
 
+Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
+Route::get('users', 'UsersController@index');
+});
+
+
 
 
 
