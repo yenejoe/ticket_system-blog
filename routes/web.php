@@ -30,8 +30,13 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register');
 
 
-Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
-Route::get('users', 'UsersController@index');
+Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
+    Route::get('users', 'UsersController@index');
+    Route::get('roles', 'RolesController@index');
+    Route::get('roles/create', 'RolesController@create');
+    Route::post('roles/create', 'RolesController@store');
+    Route::get('users/{id?}/edit', 'UsersController@edit');
+    Route::post('users/{id?}/edit','UsersController@update');
 });
 
 
