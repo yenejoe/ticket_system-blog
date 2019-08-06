@@ -21,7 +21,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         @if (Auth::check())
-                            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                            @if(Auth::user()->hasRole('manager'))
+                                <a class="dropdown-item" href="/admin">Admin</a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout')}}">Logout</a>
                         @else
                             <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                             <a class="dropdown-item" href="{{ route('login') }}">Login</a>

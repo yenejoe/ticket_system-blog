@@ -22,9 +22,9 @@ Route::post('/ticket/{slug?}/edit','TicketsController@update');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
 Route::post('/comment', 'CommentsController@newComment');
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register');
@@ -37,6 +37,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('roles/create', 'RolesController@store');
     Route::get('users/{id?}/edit', 'UsersController@edit');
     Route::post('users/{id?}/edit','UsersController@update');
+    Route::get('/', 'PagesController@home');
+    //post routes
+    Route::get('posts', 'PostsController@index');
+    Route::get('posts/create', 'PostsController@create');
+    Route::post('posts/create', 'PostsController@store');
+    Route::get('posts/{id?}/edit', 'PostsController@edit');
+    Route::post('posts/{id?}/edit','PostsController@update');
 });
 
 

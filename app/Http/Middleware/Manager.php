@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Http\Requests;
 
 use Closure;
 
@@ -17,7 +19,7 @@ class Manager
     public function handle($request, Closure $next)
     {
         if(!Auth::check()) {
-            return redirect('users/login');
+            return redirect(route('login'));
         } else {
             $user = Auth::user();
             if($user->hasRole('manager'))
@@ -25,7 +27,7 @@ class Manager
 
                 return $next($request);
             } else {
-                return redirect('/home');
+                return redirect('/');
             }
         }
     }
