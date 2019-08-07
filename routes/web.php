@@ -29,6 +29,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register');
 
+Route::get('/blog', 'BlogController@index');
+
 
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
     Route::get('users', 'UsersController@index');
@@ -44,6 +46,10 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('posts/create', 'PostsController@store');
     Route::get('posts/{id?}/edit', 'PostsController@edit');
     Route::post('posts/{id?}/edit','PostsController@update');
+    //categories routes
+    Route::get('categories', 'CategoriesController@index');
+    Route::get('categories/create', 'CategoriesController@create');
+    Route::post('categories/create', 'CategoriesController@store');
 });
 
 
