@@ -15,7 +15,7 @@
 @else
 @foreach ($posts as $post)
 <div class="panel panel-default">
-<div class="panel-heading">{!! $post->title !!}</div>
+<h4 class="panel-heading">{!! $post->title !!}</h4>
 <div class="panel-body">
 {!! mb_substr($post->content,0,500) !!}
 </div>
