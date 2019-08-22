@@ -15,7 +15,7 @@
 @else
 @foreach ($posts as $post)
 <div class="panel panel-default">
-<h4 class="panel-heading">{!! $post->title !!}</h4>
+<h4 class="panel-heading"> <a href="{!! action('BlogController@show', $post->slug) !!}"> {!! $post->title !!}</h4>
 <div class="panel-body">
 {!! mb_substr($post->content,0,500) !!}
 </div>

@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $guarded = ['id'];
-    
-    public function ticket()
+
+    // public function ticket()
+    // {
+    // return $this->belongsTo('App\Ticket');
+    // }
+
+    public function post()
     {
-    return $this->belongsTo('App\Ticket');
+        return $this->morphTo();
     }
 
 

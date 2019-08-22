@@ -10,7 +10,7 @@ class Ticket extends Model
 
     public function comments()
     {
-    return $this->hasMany('App\Comment', 'post_id');
+        return $this->morphMany('App\Comment', 'post');
     }
 
     public function user()
@@ -20,6 +20,6 @@ class Ticket extends Model
 
     public function getTitle()
     {
-    return $this->title;
+        return $this->title;
     }
 }

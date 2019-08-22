@@ -12,4 +12,11 @@ class BlogController extends Controller
         $posts = Post::all();
         return view('blog.index', compact('posts'));
     }
+
+    public function show($slug)
+    {
+        $post = Post::whereSlug($slug)->firstOrFail();
+        $comments = $post->comments()->get();
+        return view('blog.show', compact('post', 'comments'));
+    }
 }
